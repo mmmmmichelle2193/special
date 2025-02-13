@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mailbox for You</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #FBB4A5; /* Background color from palette */
+        }
+        .picture-frame {
+            width: 270px;
+            height: 170px;
+            position: relative;
+            margin-bottom: 20px;
+            border: 15px solid #FFE893; /* Soft yellow from palette */
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+            background-color: #FCFFC1; /* Light beige mat color */
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .picture-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .mailbox {
+            position: relative;
+            width: 200px;
+            height: 250px;
+            background-color: #FB9EC6;
+            border-radius: 20px 20px 5px 5px;
+            border: 4px solid black;
+            cursor: pointer;
+        }
+        .mailbox::before {
+            content: "";
+            position: absolute;
+            width: 140px;
+            height: 20px;
+            background-color: #FFE893;
+            border: 4px solid black;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+        }
+        .slot {
+            position: absolute;
+            width: 120px;
+            height: 20px;
+            background-color: black;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+        .letter {
+            width: 100px;
+            height: 70px;
+            background-color: #FCFFC1;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100%);
+            transition: transform 0.5s ease-in-out;
+            text-align: center;
+            line-height: 70px;
+            font-family: cursive;
+            font-size: 14px;
+            border: 2px solid black;
+            opacity: 0;
+        }
+        .mailbox.open .letter {
+            transform: translateX(-50%) translateY(20px);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="picture-frame">
+        <img src="image/img.jpg" alt="Picture Frame">
+    </div>
+    <div class="mailbox" onclick="openMailbox()">
+        <div class="slot"></div>
+        <div class="letter">I love you!</div>
+    </div>
+    <script>
+        function openMailbox() {
+            document.querySelector('.mailbox').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
